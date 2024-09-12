@@ -61,7 +61,7 @@ jobs:
              QUARKUS_VERSION="-Dquarkus.platform.version=${{ matrix.quarkus-version }}"
           fi
 
-          mvn -B --no-transfer-progress -fae -s .github/mvn-settings.xml clean install -Dvalidate-format $QUARKUS_VERSION $EXCLUDE_MODULES -Dquarkus.platform.version="3.14.2"
+          mvn -B --no-transfer-progress -fae -s .github/mvn-settings.xml clean install -Dvalidate-format $QUARKUS_VERSION $EXCLUDE_MODULES $MAVEN_PROFILES
       - name: Zip Artifacts
         if: failure()
         run: |
