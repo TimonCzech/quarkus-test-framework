@@ -61,7 +61,7 @@ jobs:
              QUARKUS_VERSION="-Dquarkus.platform.version=${{ matrix.quarkus-version }}"
           fi
 
-          mvn -B --no-transfer-progress -fae -s .github/mvn-settings.xml clean install  -Dvalidate-format $QUARKUS_VERSION $EXCLUDE_MODULES
+          mvn -B --no-transfer-progress -fae -s .github/mvn-settings.xml clean install -Drun-cli-tests -Dts.quarkus.cli.cmd="${PWD}/quarkus-dev-cli" -Dvalidate-format $QUARKUS_VERSION $EXCLUDE_MODULES
       - name: Zip Artifacts
         if: failure()
         run: |
